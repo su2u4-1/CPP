@@ -1,11 +1,11 @@
 #include <iostream>
 #include <stack>
 #include <string>
-#include <vector>
+#include <cmath>
 
 using namespace std;
 
-int cp(string a){
+int priority(string a){
     int ap = 0;
     if(a == "^" || a == "%"){
         ap = 3;
@@ -13,92 +13,128 @@ int cp(string a){
     else if(a == "*" || a == "/"){
         ap = 2;
     }
-    else if(a == "+" || a == "1"){
+    else if(a == "+" || a == "-"){
         ap = 1;
+    }
+    else if(a == "(" || a == "="){
+        ap = -1;
     }
     return ap;
 }
 
-bool pc(string a, string b){
-    int ap = cp(a);
-    int bp = cp(b);
-    return bp < ap;
-}
-
-stack<int> s;
-void co(string r){
+void compute(stack<string> input){
     int a, b;
-    if(r == "+"){
-        // cout << "push +" << endl;
-        b = s.top();
-        s.pop();
-        a = s.top();
-        s.pop();
-        s.push(a+b);
+    string now;
+    stack<int> Stack;
+    for(int i = 0; i < input.size(); i++){
+        now = input.top();
+        if(now == "+"){
+            cout << "push +" << endl;
+            b = Stack.top();
+            Stack.pop();
+            a = Stack.top();
+            Stack.pop();
+            Stack.push(a+b);
+        }
+        else if(now == "-"){
+            cout << "push -" << endl;
+            b = Stack.top();
+            Stack.pop();
+            a = Stack.top();
+            Stack.pop();
+            Stack.push(a-b);
+        }
+        else if(now == "*"){
+            cout << "push *" << endl;
+            b = Stack.top();
+            Stack.pop();
+            a = Stack.top();
+            Stack.pop();
+            Stack.push(a*b);
+        }
+        else if(now == "/"){
+            cout << "push /" << endl;
+            b = Stack.top();
+            Stack.pop();
+            a = Stack.top();
+            Stack.pop();
+            Stack.push(a/b);
+        }
+        else if(now == "^"){
+            cout << "push ^" << endl;
+            b = Stack.top();
+            Stack.pop();
+            a = Stack.top();
+            Stack.pop();
+            Stack.push(pow(a, b));
+        }
+        else if(now == "%"){
+            cout << "push %" << endl;
+            b = Stack.top();
+            Stack.pop();
+            a = Stack.top();
+            Stack.pop();
+            Stack.push(a%b);
+        }
+        else if(now == "="){
+            break;
+        }
+        else{
+            cout << "push " << now << endl;
+            Stack.push(stoi(now));
+        }
+        cout << "top= " <<Stack.top() << endl;
+        input.pop();
     }
-    else if(r == "-"){
-        // cout << "push -" << endl;
-        b = s.top();
-        s.pop();
-        a = s.top();
-        s.pop();
-        s.push(a-b);
-    }
-    else if(r == "*"){
-        // cout << "push *" << endl;
-        b = s.top();
-        s.pop();
-        a = s.top();
-        s.pop();
-        s.push(a*b);
-    }
-    else if(r == "/"){
-        // cout << "push /" << endl;
-        b = s.top();
-        s.pop();
-        a = s.top();
-        s.pop();
-        s.push(a/b);
-    }
-    else if(r == "^"){
-        // cout << "push ^" << endl;
-        b = s.top();
-        s.pop();
-        a = s.top();
-        s.pop();
-        s.push(pow(a, b));
-    }
-    else if(r == "%"){
-        // cout << "push %" << endl;
-        b = s.top();
-        s.pop();
-        a = s.top();
-        s.pop();
-        s.push(a%b);
-    }
-    else if(r == "="){
-        cout << s.top() << endl;
-        exit(0);
-    }
-    else{
-        // cout << "push " << n << endl;
-        s.push(stoi(r));
-    }
-    // cout << "top= " <<s.top() << endl;
+    cout << Stack.top() << endl;
 }
 
 int main(){
     string n, r;
-    stack<string> v;
+    stack<string> symbol;
+    stack<string> output;
     int a, b;
     while(cin >> n){
-        if(cp(n) == 0){
-            co(n);
+        if(priority(n) == 0){
+            output.push(n);
         }
         else if(n == "("){
-            v.push(n);
+            symbol.push(n);
+        }
+        else if(n == ")"){
+            while(true){
+                if(symbol.top() != "("){
+                    output.push(symbol.top());
+                    symbol.pop();
+                }
+                else{
+                    symbol.pop();
+                    break;
+                }
+            }
+        }
+        else if(n == "+" || n == "-" || n == "*" || n == "/" || n == "%"){
+            while(symbol.size() > 0 && priority(n) <= priority(symbol.top())){
+                output.push(symbol.top());
+                symbol.pop();
+            }
+            symbol.push(n);
+        }
+        else if(n == "^"){
+            while(symbol.size() > 0 && priority(n) < priority(symbol.top())){
+                output.push(symbol.top());
+                symbol.pop();
+            }
+            symbol.push(n);
+        }
+        else if(n == "="){
+            break;
+        }
+        else{
+            cout << "error: Unknown " << n << endl;
         }
     }
+    compute(output);
 
     return 0;
 }
