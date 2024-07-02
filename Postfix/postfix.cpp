@@ -8,10 +8,10 @@ using namespace std;
 
 int priority(string a){
     int ap = 0;
-    if(a == "^" || a == "%"){
+    if(a == "^"){
         ap = 3;
     }
-    else if(a == "*" || a == "/"){
+    else if(a == "*" || a == "/" || a == "%"){
         ap = 2;
     }
     else if(a == "+" || a == "-"){
