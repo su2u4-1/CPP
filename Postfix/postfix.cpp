@@ -87,7 +87,21 @@ vector<string> infixToPostfix(){
     string n;
     while(cin >> n){
         if(priority(n) == 0){
-            output.push_back(n);
+            bool f = true;
+            if((n[0] < '0' || n[0] > '9') && n[0] != '-'){
+                f = false;
+            }
+            for(int i = 1; i < n.size(); i++){
+                if(n[i] < '0' || n[i] > '9'){
+                    f = false;
+                }
+            }
+            if(f){
+                output.push_back(n);
+            }
+            else{
+                cout << "error: " << n << " is not a number" << endl;
+            }
         }
         else if(n == "("){
             symbol.push(n);
