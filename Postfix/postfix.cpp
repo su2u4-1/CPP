@@ -3,6 +3,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -85,7 +86,10 @@ vector<string> infixToPostfix(){
     stack<string> symbol;
     vector<string> output;
     string n;
-    while(cin >> n){
+    string line;
+    getline(cin, line);
+    istringstream iss(line);
+    while(iss >> n){
         if(priority(n) == 0){
             bool f = true;
             if((n[0] < '0' || n[0] > '9') && n[0] != '-'){
