@@ -4,25 +4,9 @@
 #include <cmath>
 #include <vector>
 #include <sstream>
+#include <map>
 
 using namespace std;
-
-int priority(string a){
-    int ap = 0;
-    if(a == "^"){
-        ap = 3;
-    }
-    else if(a == "*" || a == "/" || a == "%"){
-        ap = 2;
-    }
-    else if(a == "+" || a == "-"){
-        ap = 1;
-    }
-    else if(a == "(" || a == ")" || a == "="){
-        ap = -1;
-    }
-    return ap;
-}
 
 void calculate(vector<string> input){
     int a, b;
@@ -85,27 +69,23 @@ void calculate(vector<string> input){
 vector<string> infixToPostfix(){
     stack<string> symbol;
     vector<string> output;
+    map<string, int> priority {{"^", 3}, {"*", 2}, {"/", 2}, {"%", 2}, {"+", 1}, {"-", 1}, {"(", -1}, {")", -1}, {"=", -1}};
     string n;
     string line;
     getline(cin, line);
     istringstream iss(line);
     while(iss >> n){
-        if(priority(n) == 0){
-            bool f = true;
-            if((n[0] < '0' || n[0] > '9') && n[0] != '-'){
+        bool f = false;
+        if((n[0] >= '0' && n[0] <= '9') || (n[0] == '-' && n.size() > 1)){
+            f = true;
+        }
+        for(int i = 1; i < n.size(); i++){
+            if(n[i] < '0' || n[i] > '9'){
                 f = false;
             }
-            for(int i = 1; i < n.size(); i++){
-                if(n[i] < '0' || n[i] > '9'){
-                    f = false;
-                }
-            }
-            if(f){
-                output.push_back(n);
-            }
-            else{
-                cout << "error: " << n << " is not a number" << endl;
-            }
+        }
+        if(f){
+            output.push_back(n);
         }
         else if(n == "("){
             symbol.push(n);
@@ -123,14 +103,14 @@ vector<string> infixToPostfix(){
             }
         }
         else if(n == "+" || n == "-" || n == "*" || n == "/" || n == "%"){
-            while(symbol.size() > 0 && priority(n) <= priority(symbol.top())){
+            while(symbol.size() > 0 && priority[n] <= priority[symbol.top()]){
                 output.push_back(symbol.top());
                 symbol.pop();
             }
             symbol.push(n);
         }
         else if(n == "^"){
-            while(symbol.size() > 0 && priority(n) < priority(symbol.top())){
+            while(symbol.size() > 0 && priority[n] < priority[symbol.top()]){
                 output.push_back(symbol.top());
                 symbol.pop();
             }
