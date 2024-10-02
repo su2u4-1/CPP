@@ -7,10 +7,10 @@
             "args": [
                 "${file}",
                 "-o",
-                "${workspaceFolder}\\temp\\${fileBasenameNoExtension}.exe"
+                "$C:\\Users\\joey2\\code\\CPP\\temp\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${workspaceFolder}\\temp\\"
+                "cwd": "$C:\\Users\\joey2\\code\\CPP\\temp\\"
             },
             "problemMatcher": [
                 "$gcc"
