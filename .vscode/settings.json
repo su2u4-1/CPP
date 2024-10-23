@@ -3,6 +3,7 @@
         "*.json5": "json5",
         "*.ino": "cpp",
         "*.drawio": "xml",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "iostream": "cpp"
     }
 }
