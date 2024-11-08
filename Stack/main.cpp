@@ -1,21 +1,20 @@
 #include <iostream>
+
 #include "stack.h"
 
 using namespace std;
 
-template<class Type>
-void show(Stack<Type> s)
-{
+template <class Type>
+void show(Stack<Type> s) {
     cout << "[Bottom] -> ";
-    for(int i = 0; i < s.getIndex(); i++){
+    for (int i = 0; i < s.getIndex(); i++) {
         cout << *(s.getS() + i) << " -> " << endl;
     }
     cout << "[Top]" << endl;
     return;
 }
 
-
-int main(){
+int main() {
     Stack<int> s(3);
     s.push(1);
     s.show();
@@ -39,7 +38,7 @@ int main(){
     cout << s.top() << endl;
     s.pop();
     s.show();
-    cout << s.top() << endl; // 這裡的輸出可能會怪怪的，想想看為什麼 ?
+    cout << s.top() << endl;  // 這裡的輸出可能會怪怪的，想想看為什麼 ?
     s.pop();
     s.show();
     return 0;

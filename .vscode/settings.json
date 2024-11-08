@@ -4,6 +4,8 @@
         "*.ino": "cpp",
         "*.drawio": "xml",
         "xstring": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "tuple": "cpp",
+        "limits": "cpp"
     }
 }

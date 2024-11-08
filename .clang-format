@@ -1,0 +1,33 @@
+BasedOnStyle: Google
+UseTab: Never
+IndentWidth: 4
+ColumnLimit: 0
+AllowAllArgumentsOnNextLine: 'false'
+AllowAllParametersOfDeclarationOnNextLine: 'true'
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+Cpp11BracedListStyle: true
+RemoveEmptyLinesInUnwrappedLines: true
+AtStartOfBlock: false
+IndentExternBlock: Indent
+SplitEmptyFunction: false
+AllowShortBlocksOnASingleLine: Empty
+BreakStringLiterals: 'false'
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: 'false'
+SpacesBeforeTrailingComments: '2'
+BreakBeforeBraces: Custom
+BraceWrapping:
+  BeforeWhile: false
+  BeforeLambdaBody: false
+  BeforeElse: false
+  BeforeCatch: false
+  AfterControlStatement: Never
+  AfterExternBlock: false
+  AfterUnion: false
+  AfterStruct: false
+  AfterNamespace: false
+  AfterFunction: false
+  AfterEnum: false
+  AfterClass: false
+  AfterCaseLabel: false

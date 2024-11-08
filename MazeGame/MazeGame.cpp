@@ -19,7 +19,9 @@ struct hash<std::tuple<int, int>> {
 std::vector<std::tuple<int, int>> astar_search(std::vector<std::vector<int>> grid, std::tuple<int, int> start, std::tuple<int, int> end) {
     std::vector<std::tuple<double, std::tuple<int, int>>> open_list;
     open_list.push_back({0, start});
-    std::sort(open_list.begin(), open_list.end(), [](const auto &a, const auto &b) { return std::get<0>(a) < std::get<0>(b); });
+    std::sort(open_list.begin(), open_list.end(), [](const auto &a, const auto &b) {
+        return std::get<0>(a) < std::get<0>(b);
+    });
     std::vector<std::tuple<int, int>> closed_list;
     std::unordered_map<std::tuple<int, int>, std::tuple<int, int>> came_from;
     std::unordered_map<std::tuple<int, int>, double> g_score;
@@ -63,7 +65,9 @@ std::vector<std::tuple<int, int>> astar_search(std::vector<std::vector<int>> gri
                     f_score[neighbor] = g_score[neighbor] + abs(std::get<0>(neighbor) - std::get<0>(end)) + abs(std::get<1>(neighbor) - std::get<1>(end));
                     if (std::find(closed_list.begin(), closed_list.end(), neighbor) == closed_list.end()) {
                         open_list.push_back(std::make_tuple(f_score[neighbor], neighbor));
-                        std::sort(open_list.begin(), open_list.end(), [](const auto &a, const auto &b) { return std::get<0>(a) < std::get<0>(b); });
+                        std::sort(open_list.begin(), open_list.end(), [](const auto &a, const auto &b) {
+                            return std::get<0>(a) < std::get<0>(b);
+                        });
                     }
                 }
             }
