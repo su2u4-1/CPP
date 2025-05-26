@@ -6,6 +6,12 @@
         "xstring": "cpp",
         "iostream": "cpp",
         "tuple": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "bitset": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp"
     }
 }

@@ -1,0 +1,68 @@
+0x7ffffcba0: 11100000 <- string b
+0x7ffffcba1: 00100111
+0x7ffffcba2: 00000000
+0x7ffffcba3: 00000000
+0x7ffffcba4: 00001010
+0x7ffffcba5: 00000000
+0x7ffffcba6: 00000000
+0x7ffffcba7: 00000000
+0x7ffffcba8: 00110010
+0x7ffffcba9: 00000000
+0x7ffffcbaa: 00000000
+0x7ffffcbab: 00000000
+0x7ffffcbac: 00000000
+0x7ffffcbad: 00000000
+0x7ffffcbae: 00000000
+0x7ffffcbaf: 00000000
+0x7ffffcbb0: 00110010
+0x7ffffcbb1: 00000000
+0x7ffffcbb2: 00000000
+0x7ffffcbb3: 00000000
+0x7ffffcbb4: 00000000
+0x7ffffcbb5: 00000000
+0x7ffffcbb6: 00000000
+0x7ffffcbb7: 00000000
+0x7ffffcbb8: 10000100
+0x7ffffcbb9: 11001100
+0x7ffffcbba: 11111111
+0x7ffffcbbb: 11111111
+0x7ffffcbbc: 00000111
+0x7ffffcbbd: 00000000
+0x7ffffcbbe: 00000000
+0x7ffffcbbf: 00000000
+0x7ffffcbc0: 11010000 <- string a
+0x7ffffcbc1: 11001011
+0x7ffffcbc2: 11111111
+0x7ffffcbc3: 11111111
+0x7ffffcbc4: 00000111
+0x7ffffcbc5: 00000000
+0x7ffffcbc6: 00000000
+0x7ffffcbc7: 00000000
+0x7ffffcbc8: 00000011
+0x7ffffcbc9: 00000000
+0x7ffffcbca: 00000000
+0x7ffffcbcb: 00000000
+0x7ffffcbcc: 00000000
+0x7ffffcbcd: 00000000
+0x7ffffcbce: 00000000
+0x7ffffcbcf: 00000000
+0x7ffffcbd0: 00110001 ('1') <- string a.data()
+0x7ffffcbd1: 00110010 ('2')
+0x7ffffcbd2: 00110011 ('3')
+0x7ffffcbd3: 00000000 ('\0')
+0x7ffffcbd4: 00000001
+0x7ffffcbd5: 00000000
+0x7ffffcbd6: 00000000
+0x7ffffcbd7: 00000000
+0x7ffffcbd8: 10000000
+0x7ffffcbd9: 00000100
+0x7ffffcbda: 00000000
+0x7ffffcbdb: 00000000
+0x7ffffcbdc: 00001010
+0x7ffffcbdd: 00000000
+0x7ffffcbde: 00000000
+0x7ffffcbdf: 00000000
+
+var | sizeof | address     | .data() address
+a   | 32     | 0x7ffffcbc0 | 0x7ffffcbd0
+b   | 32     | 0x7ffffcba0 | 0xa000027e0 = 00001010 00000000 00000000 00100111 11100000
