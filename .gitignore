@@ -1,2 +1,5 @@
 *.exe
 /temp
+.*
+compile_flags.txt
+.vscode
