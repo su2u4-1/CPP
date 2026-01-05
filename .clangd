@@ -1,0 +1,18 @@
+CompileFlags:
+  Add:
+    - -Iinclude
+    - --target=x86_64-w64-mingw32
+    - -isystem
+    - C:/msys64/mingw64/include/c++/13.2.0
+    - -isystem
+    - C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32
+    - -isystem
+    - C:/msys64/mingw64/include
+    - -isystem
+    - C:/msys64/mingw64/x86_64-w64-mingw32/include
+  Remove:
+    - -Werror
+    - -Weverything
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: None
