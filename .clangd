@@ -1,18 +1,12 @@
 CompileFlags:
   Add:
+    - -std=c++17
     - -Iinclude
-    - --target=x86_64-w64-mingw32
     - -isystem
-    - C:/msys64/mingw64/include/c++/13.2.0
+    - C:/msys64/usr/include
     - -isystem
-    - C:/msys64/mingw64/include/c++/13.2.0/x86_64-w64-mingw32
+    - C:/msys64/usr/lib/gcc/x86_64-pc-msys/13.2.0/include
     - -isystem
-    - C:/msys64/mingw64/include
+    - C:/msys64/usr/lib/gcc/x86_64-pc-msys/13.2.0/include-fixed
     - -isystem
-    - C:/msys64/mingw64/x86_64-w64-mingw32/include
-  Remove:
-    - -Werror
-    - -Weverything
-Diagnostics:
-  UnusedIncludes: None
-  MissingIncludes: None
+    - C:/msys64/usr/lib/gcc/x86_64-pc-msys/13.2.0/../../../../include/w32api
